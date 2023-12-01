@@ -42,7 +42,8 @@ def downtime_table():
                 date_before = datetime.strptime(values[count - 1].__str__(), '%Y%m%d%H%M')
                 date_after = datetime.strptime(value.__str__(), '%Y%m%d%H%M')
                 delta = (date_after - date_before) / timedelta(minutes=1)
-                table += tr(th(date_before.__str__()) + th(date_after.__str__()) + th(delta.__str__()))
+                if delta > 2:
+                    table += tr(th(date_before.__str__()) + th(date_after.__str__()) + th(delta.__str__()))
         count+=1
 
     table += "</table>"
