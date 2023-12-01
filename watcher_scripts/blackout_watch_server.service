@@ -4,7 +4,7 @@ Description=Giving signs of life
 [Service]
 Type=simple
 User=pi
-ExecStart=/home/pi/blackout_watch/watcher_scripts/watch_loop.sh
+ExecStart=/home/pi/blackout_watch/watcher_scripts/start_server.sh
 Restart=on-failure
 
 [Install]

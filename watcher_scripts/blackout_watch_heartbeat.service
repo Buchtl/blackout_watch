@@ -1,0 +1,11 @@
+[Unit]
+Description=Giving signs of life
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/home/pi/blackout_watch/watcher_scripts/blackout_watch_heartbeat.sh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
