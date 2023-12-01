@@ -3,12 +3,11 @@ from flask import send_file
 import getpass
 from datetime import datetime
 from datetime import timedelta
+import socket
 
 app = Flask(__name__)
 
 heartbeat_file_abspath = "/home/" + getpass.getuser() + "/heartbeat.txt"
-
-import socket
 hostname=socket.gethostname()
 IPAddr=socket.gethostbyname(hostname)
 def style():
