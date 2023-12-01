@@ -33,7 +33,7 @@ def downtime_table():
     with open(path) as f_ping:
         lines = f_ping.readlines()
         for line in lines:
-            values.append(int(strip_linebreak(line)))
+            values.append(int(strip_linebreak(line.strip())))
 
     count = 0
     for value in values:
