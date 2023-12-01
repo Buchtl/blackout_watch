@@ -20,6 +20,12 @@ def tr(input):
     return "<tr>" + input + "</tr>"
 def th(input):
     return "<th>" + input + "</th>"
+
+def strip_linebreak(input):
+    if "\n" in input:
+        return input.replace("\n", "")
+    else:
+        return input
 def downtime_table():
     path = "/home/" + getpass.getuser() + "/ping.txt"
     values = []
@@ -27,7 +33,7 @@ def downtime_table():
     with open(path) as f_ping:
         lines = f_ping.readlines()
         for line in lines:
-            values.append(int(line.replace("\n", "")))
+            values.append(int(strip_linebreak(line)))
 
     count = 0
     for value in values:
