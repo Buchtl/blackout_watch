@@ -1,10 +1,16 @@
 from flask import Flask
+from flask import send_file
 import getpass
 from datetime import datetime
 from datetime import timedelta
 
 app = Flask(__name__)
 
+heartbeat_file_abspath = "/home/" + getpass.getuser() + "/heartbeat.txt"
+
+import socket
+hostname=socket.gethostname()
+IPAddr=socket.gethostbyname(hostname)
 def style():
     return """
     <style>
@@ -13,8 +19,8 @@ def style():
         }
     </style>
     """
-def html(input):
-    return "<html>" + style() + input + "</html>"
+def enclose(input, tag):
+    return "<" + tag + ">" + input + "</" + tag + ">"
 
 def tr(input):
     return "<tr>" + input + "</tr>"
@@ -22,10 +28,9 @@ def th(input):
     return "<th>" + input + "</th>"
 
 def downtime_table():
-    path = "/home/" + getpass.getuser() + "/ping.txt"
     values = []
     table = "<table><thead><th>downtime start</th><th>downtime end</th><th>duration (approx minutes)</th></thead>"
-    with open(path) as f_ping:
+    with open(heartbeat_file_abspath) as f_ping:
         lines = f_ping.readlines()
         for line in lines:
             values.append(int("".join(c for c in line if c.isdigit())))
@@ -44,8 +49,23 @@ def downtime_table():
     table += "</table>"
     return table
 
+def heading_text():
+    return "<h1>Downtimes</h1>"
+
+def download_ping():
+    return "<a href=http://" + IPAddr + ":8080/heartbeatfile download>download hearbeat file</a>"
 @app.route('/')
 def hello():
-    return html(downtime_table())
+    prolog = enclose(heading_text(), "div")
+    table = enclose(downtime_table(), "div")
+    download = enclose(download_ping(), "div")
+    return enclose(style() + enclose(prolog + table + download, "body"), "html")
+
+@app.route('/heartbeatfile')
+def return_hearbeat_file():
+    try:
+        return send_file(heartbeat_file_abspath)
+    except Exception as e:
+        return str(e)
 
 app.run(host='0.0.0.0', port=8080)
