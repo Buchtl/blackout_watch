@@ -6,13 +6,16 @@ from datetime import datetime
 from datetime import timedelta
 import logging
 
+
 path_home = "/home/" + getpass.getuser() + "/"
 heartbeat_file_abspath = path_home + "heartbeat.txt"
 downtimes_json = path_home + "downtimes.json"
+logfile = path_home + "startup.log"
+logging.basicConfig(filename=logfile, level=logging.DEBUG)
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
-logfile = path_home + "startup.log"
-logging.basicConfig(filename=logfile, encoding='utf-8', level=logging.DEBUG)
+
+logging.info("Check for downtime")
 
 # get last heartbeat as date
 def get_last_heartbeat():
