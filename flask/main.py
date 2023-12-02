@@ -35,7 +35,7 @@ def download_heartbeat():
     return "<a href=http://" + IPAddr + ":8080/heartbeatfile download>download hearbeat file</a>"
 
 def download_downtimes():
-    return "<a href=http://" + IPAddr + ":8080/heartbeatfile download>download hearbeat file</a>"
+    return "<a href=http://" + IPAddr + ":8080/downtimesfile download>download downtimes file</a>"
 #
 # get Downtimes
 #
