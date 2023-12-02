@@ -11,8 +11,7 @@ path_home = "/home/" + getpass.getuser() + "/"
 heartbeat_file_abspath = path_home + "heartbeat.txt"
 downtimes_json = path_home + "downtimes.json"
 logfile = path_home + "startup.log"
-logging.basicConfig(format='%(asctime)s %(message)s')
-logging.basicConfig(filename=logfile, level=logging.DEBUG)
+logging.basicConfig(filename=logfile, level=logging.DEBUG, format='%(asctime)s %(message)s')
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
 
