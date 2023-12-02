@@ -1,0 +1,11 @@
+[Unit]
+Description=Persist last heartbeat, startup time and delta betweenw
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/home/pi/blackout_watch/watcher_scripts/blackout_watch_startup.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
