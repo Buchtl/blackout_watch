@@ -34,8 +34,9 @@ element = {'shutdown': last_heartbeat.__str__(), 'startup': current.strftime("%Y
 
 data = [element]
 if not os.path.isfile(downtimes_json):
-    with open(downtimes_json, "x") as f:
-        json.dump({'downtimes': [element]}, f, indent=4)
+    if os.path.isfile(heartbeat_file_abspath):
+        with open(downtimes_json, "x") as f:
+            json.dump({'downtimes': [element]}, f, indent=4)
 else:
     with open(downtimes_json, "r+") as f:
         json_content = json.load(f)
