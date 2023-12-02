@@ -4,13 +4,15 @@ import os.path
 import socket
 from datetime import datetime
 from datetime import timedelta
+import logging
 
 path_home = "/home/" + getpass.getuser() + "/"
 heartbeat_file_abspath = path_home + "heartbeat.txt"
 downtimes_json = path_home + "downtimes.json"
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
-
+logfile = path_home + "startup.log"
+logging.basicConfig(filename=logfile, encoding='utf-8', level=logging.DEBUG)
 
 # get last heartbeat as date
 def get_last_heartbeat():
@@ -25,6 +27,7 @@ def get_last_heartbeat():
 if os.path.isfile(heartbeat_file_abspath):
     last_heartbeat = get_last_heartbeat()
 else:
+    logging.info("File " + heartbeat_file_abspath + "doesn't exist")
     exit(0)
 
 current = datetime.now()
