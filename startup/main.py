@@ -36,7 +36,7 @@ else:
 
 current = datetime.now()
 logging.debug("current time is " + current.strftime("%Y-%m-%d %H:%M:%S").__str__())
-delta = (current - last_heartbeat) / timedelta(minutes=1)
+delta = current - last_heartbeat
 element = {'shutdown': last_heartbeat.__str__(), 'startup': current.strftime("%Y-%m-%d %H:%M:%S").__str__(),
            'delta': delta.__str__()}
 

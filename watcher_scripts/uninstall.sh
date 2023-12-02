@@ -7,6 +7,6 @@ sudo rm /etc/systemd/system/blackout_watch_startup.service
 sudo rm /etc/systemd/system/blackout_watch_server.service
 sudo systemctl daemon-reload
 # zur Sicherheit
-sudo systemctl unmask blackout_watch_startup.service
-sudo systemctl unmask blackout_watch_server.service
+#sudo systemctl unmask blackout_watch_startup.service
+#sudo systemctl unmask blackout_watch_server.service
 
