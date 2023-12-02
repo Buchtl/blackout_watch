@@ -2,7 +2,7 @@
 Description=Giving signs of life
 
 [Service]
-Type=simple
+Type=oneshot
 User=pi
 ExecStart=/home/pi/blackout_watch/watcher_scripts/blackout_watch_heartbeat.sh
 Restart=always
