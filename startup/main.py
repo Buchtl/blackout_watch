@@ -39,11 +39,7 @@ if not os.path.isfile(downtimes_json):
 else:
     with open(downtimes_json, "r+") as f:
         json_content = json.load(f)
-        print(json_content)
-        print("##################")
         json_content['downtimes'].append(element)
-        print("updated")
-        print(json_content)
         with open(downtimes_json, "w") as f_out:
             json.dump(json_content, f_out, indent=4)
 
