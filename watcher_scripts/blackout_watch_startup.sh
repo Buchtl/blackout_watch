@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # Some delay because Pi needs to sync his clock
-sleep 10
+echo "before sleep" >> /home/pi/times.txt
+echo date >> /home/pi/times.txt
+sleep 15
+echo "after sleep" >> /home/pi/times.txt
+echo date >> /home/pi/times.txt
 
 python3 /home/pi/blackout_watch/startup/main.py
 # Keeping service busy
