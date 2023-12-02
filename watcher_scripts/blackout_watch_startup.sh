@@ -3,7 +3,7 @@
 # Some delay because Pi needs to sync his clock
 echo "before sleep" >> /home/pi/times.txt
 date >> /home/pi/times.txt
-sleep 15
+sleep 30
 echo "after sleep" >> /home/pi/times.txt
 date >> /home/pi/times.txt
 
