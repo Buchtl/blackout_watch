@@ -43,4 +43,4 @@ else:
         with open(downtimes_json, "w") as f_out:
             json.dump(json_content, f_out, indent=4)
 
-exit(0)
+#exit(0)
