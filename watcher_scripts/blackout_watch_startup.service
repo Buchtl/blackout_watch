@@ -1,5 +1,8 @@
 [Unit]
 Description=Persist last heartbeat, startup time and delta between
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
 
 [Service]
 Type=simple
