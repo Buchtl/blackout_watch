@@ -10,8 +10,7 @@ app = Flask(__name__)
 path_home = "/home/" + getpass.getuser() + "/"
 heartbeat_file_abspath = path_home + "heartbeat.txt"
 downtimes_file_abspath = path_home + "downtimes.json"
-hostname=socket.gethostname()
-IPAddr=socket.gethostbyname(hostname)
+IPAddr=socket.gethostbyname("blackout-watch")
 def style():
     return """
     <style>
