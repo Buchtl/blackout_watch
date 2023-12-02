@@ -40,7 +40,7 @@ def get_last_heartbeat():
 
 if os.path.isfile(heartbeat_file_abspath):
     last_heartbeat = get_last_heartbeat()
-    logging.debug("latest hearbeat is " + last_heartbeat.__str__())
+    logging.debug("latest heartbeat is " + last_heartbeat.__str__())
 else:
     logging.info("File " + heartbeat_file_abspath + " doesn't exist -> exit")
     exit(0)
