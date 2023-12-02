@@ -15,7 +15,7 @@ logging.basicConfig(filename=logfile, level=logging.DEBUG)
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
 
-logging.info("Check for downtime")
+logging.info(datetime.now() + " Check for downtime")
 
 # get last heartbeat as date
 def get_last_heartbeat():
