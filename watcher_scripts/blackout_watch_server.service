@@ -6,7 +6,7 @@ Type=oneshot
 User=pi
 ExecStartPre=/bin/sh -c 'until host google.com; do sleep 1; done'
 ExecStart=/home/pi/blackout_watch/watcher_scripts/start_server.sh
-Restart=always
+Restart=no
 
 [Install]
 WantedBy=muilti-user.target
