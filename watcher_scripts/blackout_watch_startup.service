@@ -6,6 +6,9 @@ Type=simple
 User=pi
 ExecStart=/home/pi/blackout_watch/watcher_scripts/blackout_watch_startup.sh
 Restart=on-failure
+RestartSec=30
+StartLimitInterval=350
+StartLimitBurst=10
 
 [Install]
 WantedBy=multi-user.target
