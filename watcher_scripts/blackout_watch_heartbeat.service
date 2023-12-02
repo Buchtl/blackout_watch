@@ -2,10 +2,10 @@
 Description=Giving signs of life
 
 [Service]
-Type=oneshot
+Type=simple
 User=pi
 ExecStart=/home/pi/blackout_watch/watcher_scripts/blackout_watch_heartbeat.sh
-Restart=no
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

@@ -2,11 +2,11 @@
 Description=Persist last heartbeat, startup time and delta between
 
 [Service]
-Type=oneshot
+Type=simple
 User=pi
 ExecStartPre=/bin/sh -c 'until host google.com; do sleep 1; done'
 ExecStart=/home/pi/blackout_watch/watcher_scripts/blackout_watch_startup.sh
-Restart=no
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
