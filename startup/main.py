@@ -6,7 +6,6 @@ from datetime import datetime
 from datetime import timedelta
 import logging
 
-
 path_home = "/home/" + getpass.getuser() + "/"
 heartbeat_file_abspath = path_home + "heartbeat.txt"
 downtimes_json = path_home + "downtimes.json"
@@ -16,6 +15,7 @@ hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
 
 logging.info("Check for downtime")
+
 
 # get last heartbeat as date
 def get_last_heartbeat():
@@ -35,6 +35,7 @@ else:
     exit(0)
 
 current = datetime.now()
+logging.debug("current time is " + current.strftime("%Y-%m-%d %H:%M:%S").__str__())
 delta = (current - last_heartbeat) / timedelta(minutes=1)
 element = {'shutdown': last_heartbeat.__str__(), 'startup': current.strftime("%Y-%m-%d %H:%M:%S").__str__(),
            'delta': delta.__str__()}
