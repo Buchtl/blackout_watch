@@ -31,7 +31,7 @@ if os.path.isfile(heartbeat_file_abspath):
     last_heartbeat = get_last_heartbeat()
     logging.debug("latest hearbeat is " + last_heartbeat.__str__())
 else:
-    logging.info("File " + heartbeat_file_abspath + "doesn't exist")
+    logging.info("File " + heartbeat_file_abspath + " doesn't exist -> exit")
     exit(0)
 
 current = datetime.now()
