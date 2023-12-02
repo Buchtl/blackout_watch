@@ -29,6 +29,7 @@ def get_last_heartbeat():
 
 if os.path.isfile(heartbeat_file_abspath):
     last_heartbeat = get_last_heartbeat()
+    logging.debug("latest hearbeat is " + last_heartbeat.__str__())
 else:
     logging.info("File " + heartbeat_file_abspath + "doesn't exist")
     exit(0)
@@ -40,13 +41,15 @@ element = {'shutdown': last_heartbeat.__str__(), 'startup': current.strftime("%Y
 
 data = [element]
 if not os.path.isfile(downtimes_json):
+    logging.debug(downtimes_json + " does not exist -> creating it")
     with open(downtimes_json, "x") as f:
         json.dump({'downtimes': [element]}, f, indent=4)
 else:
+    logging.debug("appending downtime to " + downtimes_json)
     with open(downtimes_json, "r+") as f:
         json_content = json.load(f)
         json_content['downtimes'].append(element)
         with open(downtimes_json, "w") as f_out:
             json.dump(json_content, f_out, indent=4)
 
-#exit(0)
+exit(0)
