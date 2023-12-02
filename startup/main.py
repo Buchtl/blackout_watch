@@ -38,7 +38,7 @@ current = datetime.now()
 logging.debug("current time is " + current.strftime("%Y-%m-%d %H:%M:%S").__str__())
 delta = current - last_heartbeat
 element = {'shutdown': last_heartbeat.__str__(), 'startup': current.strftime("%Y-%m-%d %H:%M:%S").__str__(),
-           'delta': delta.__str__()}
+           'delta': delta.__str__().split(".")[0]}
 
 data = [element]
 if not os.path.isfile(downtimes_json):

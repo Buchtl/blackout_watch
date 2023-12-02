@@ -40,7 +40,7 @@ def download_downtimes():
 # get Downtimes
 #
 def downtime_table():
-    table = "<table><thead><th>downtime start</th><th>downtime end</th><th>duration (approx minutes)</th></thead>"
+    table = "<table><thead><th>downtime start</th><th>downtime end</th><th>time delta</th></thead>"
     if os.path.isfile(heartbeat_file_abspath) and os.path.isfile(downtimes_file_abspath):
         with open(downtimes_file_abspath, "r+") as f:
             downtimes = json.load(f)['downtimes']
