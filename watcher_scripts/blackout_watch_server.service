@@ -9,4 +9,4 @@ ExecStart=/home/pi/blackout_watch/watcher_scripts/start_server.sh
 Restart=always
 
 [Install]
-WantedBy=muilti-user.target
+WantedBy=default.target

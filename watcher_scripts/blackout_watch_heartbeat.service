@@ -8,4 +8,4 @@ ExecStart=/home/pi/blackout_watch/watcher_scripts/blackout_watch_heartbeat.sh
 Restart=always
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
