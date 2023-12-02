@@ -10,7 +10,7 @@ heartbeat_file_abspath = path_home + "heartbeat.txt"
 downtimes_json = path_home + "downtimes.json"
 logfile = path_home + "startup.log"
 logging.basicConfig(filename=logfile, level=logging.DEBUG, format='%(asctime)s %(message)s')
-IPAddr=socket.gethostbyname("blackout-watch")
+IPAddr = socket.gethostbyname("blackout-watch")
 
 logging.info("Check for downtime")
 
