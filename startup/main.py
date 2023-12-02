@@ -21,9 +21,18 @@ logging.info("Check for downtime")
 def get_last_heartbeat():
     with open(heartbeat_file_abspath) as f_ping:
         lines = f_ping.readlines()
-        for line in lines:
-            pass
-        last_heartbeat_str = int("".join(c for c in line if c.isdigit())).__str__()
+        lines_len = len(lines)
+        # try last line and if failur e the forelast if existing
+        last_line = lines[lines_len - 1]
+        try:
+            last_heartbeat_str = int("".join(c for c in last_line if c.isdigit())).__str__()
+        except:
+            logging.error("Corrupted heartbeat " + last_line)
+            if lines_len > 1:
+                last_heartbeat_str = int("".join(c for c in lines[lines_len - 2] if c.isdigit())).__str__()
+            else:
+                exit(0)
+
     return datetime.strptime(last_heartbeat_str.__str__(), '%Y%m%d%H%M')
 
 
