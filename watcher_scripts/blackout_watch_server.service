@@ -1,5 +1,5 @@
 [Unit]
-Description=Giving signs of life
+Description=Starting dowtimes server
 
 [Service]
 Type=simple

@@ -31,9 +31,11 @@ def th(input):
 def heading_text():
     return "<h1>Downtimes</h1>"
 
-def download_ping():
+def download_heartbeat():
     return "<a href=http://" + IPAddr + ":8080/heartbeatfile download>download hearbeat file</a>"
 
+def download_downtimes():
+    return "<a href=http://" + IPAddr + ":8080/heartbeatfile download>download hearbeat file</a>"
 #
 # get Downtimes
 #
@@ -54,7 +56,7 @@ def downtime_table():
 def hello():
     prolog = enclose(heading_text(), "div")
     table = enclose(downtime_table(), "div")
-    download = enclose(download_ping(), "div")
+    download = enclose(download_heartbeat(), "div") + enclose(download_downtimes(), "div")
     return enclose(style() + enclose(prolog + table + download, "body"), "html")
 
 @app.route('/heartbeatfile')
@@ -63,5 +65,13 @@ def return_hearbeat_file():
         return send_file(heartbeat_file_abspath)
     except Exception as e:
         return str(e)
+
+@app.route('/downtimesfile')
+def return_downtimes_file():
+    try:
+        return send_file(downtimes_file_abspath)
+    except Exception as e:
+        return str(e)
+
 
 app.run(host='0.0.0.0', port=8080)
