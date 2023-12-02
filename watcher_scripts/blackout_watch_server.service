@@ -4,7 +4,7 @@ Description=Starting dowtimes server
 [Service]
 Type=simple
 User=pi
-
+ExecStartPre=/bin/sh -c 'until host google.com; do sleep 1; done'
 ExecStart=/home/pi/blackout_watch/watcher_scripts/start_server.sh
 Restart=always
 
