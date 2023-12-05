@@ -1,16 +1,18 @@
 from flask import Flask
 from flask import send_file
 import getpass
-import socket
 import json
 import os.path
+import network
 
 app = Flask(__name__)
 
 path_home = "/home/" + getpass.getuser() + "/"
 heartbeat_file_abspath = path_home + "heartbeat.txt"
 downtimes_file_abspath = path_home + "downtimes.json"
-IPAddr=socket.gethostbyname("blackout-watch")
+IPAddr = network.get_ip("192.{3}[0-9].[0-9]{1,3}", 5)
+
+
 def style():
     return """
     <style>
@@ -19,22 +21,32 @@ def style():
         }
     </style>
     """
+
+
 def enclose(input, tag):
     return "<" + tag + ">" + input + "</" + tag + ">"
 
+
 def tr(input):
     return "<tr>" + input + "</tr>"
+
+
 def th(input):
     return "<th>" + input + "</th>"
+
 
 def heading_text():
     return "<h1>Downtimes</h1>"
 
+
 def download_heartbeat():
     return "<a href=http://" + IPAddr + ":8080/heartbeatfile download>download hearbeat file</a>"
 
+
 def download_downtimes():
     return "<a href=http://" + IPAddr + ":8080/downtimesfile download>download downtimes file</a>"
+
+
 #
 # get Downtimes
 #
@@ -58,12 +70,14 @@ def hello():
     download = enclose(download_heartbeat(), "div") + enclose(download_downtimes(), "div")
     return enclose(style() + enclose(prolog + table + download, "body"), "html")
 
+
 @app.route('/heartbeatfile')
 def return_hearbeat_file():
     try:
         return send_file(heartbeat_file_abspath)
     except Exception as e:
         return str(e)
+
 
 @app.route('/downtimesfile')
 def return_downtimes_file():
