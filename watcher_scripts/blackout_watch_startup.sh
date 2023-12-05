@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Some delay because Pi needs to sync his clock
-OUTPUT="/home/pi/times.txt"
+OUTPUT="/home/pi/systime.txt"
 echo "before sleep" >> $OUTPUT
 date >> $OUTPUT
 sleep 30
