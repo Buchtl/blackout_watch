@@ -1,14 +1,16 @@
 #!/bin/bash
 
 # Some delay because Pi needs to sync his clock
-echo "before sleep" >> /home/pi/times.txt
-date >> /home/pi/times.txt
+OUTPUT="/home/pi/times.txt"
+echo "before sleep" >> $OUTPUT
+date >> $OUTPUT
 sleep 30
-echo "after sleep" >> /home/pi/times.txt
-date >> /home/pi/times.txt
+echo "after sleep" >> $OUTPUT
+date >> $OUTPUT
 
-python3 /home/pi/blackout_watch/startup/main.py
+cd /home/pi/blackout_watch/startup/ || exit
+python3 main.py
 # Keeping service busy
 # shellcheck disable=SC2164
-cd /home/pi/blackout_watch/watcher_scripts
+cd ../watcher_scripts
 ./blackout_watch_heartbeat.sh
