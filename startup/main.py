@@ -1,7 +1,6 @@
 import json
 import getpass
 import os.path
-import socket
 from datetime import datetime
 import logging
 
