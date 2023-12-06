@@ -24,7 +24,7 @@ logger = get_logger()
 # Pattern = regex
 # delay: time between check for ip
 def get_ip(ip_pattern: str, delay: int):
-    cmd = ("ip -4 -br a | egrep '%s' | awk  '{print $3}' | awk -F '/' '{print $1}'" % (ip_pattern))
+    cmd = ("ip -4 -br a | egrep '%s' | awk  '{print $3}' | awk -F '/' '{print $1}'" % ip_pattern)
 
     ip = ""
     while not re.search(ip_pattern, ip):
