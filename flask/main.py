@@ -10,7 +10,7 @@ app = Flask(__name__)
 path_home = "/home/" + getpass.getuser() + "/"
 heartbeat_file_abspath = path_home + "heartbeat.txt"
 downtimes_file_abspath = path_home + "downtimes.json"
-IPAddr = network.get_ip("192.{3}[0-9].[0-9]{1,3}", 5)
+IPAddr = network.get_ip("192.{3}[0-9].[0-9]{1,3}.[0-9]{1,3}", 5)
 
 
 def style():
@@ -23,8 +23,8 @@ def style():
     """
 
 
-def enclose(input, tag):
-    return "<" + tag + ">" + input + "</" + tag + ">"
+def enclose(input_to_enclose, tag):
+    return "<" + tag + ">" + input_to_enclose + "</" + tag + ">"
 
 
 def tr(input):
