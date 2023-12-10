@@ -1,6 +1,7 @@
 # custom
 .idea
 blackout_watch.iml
+frontend/node_modules
 
 # done by npx
 # Byte-compiled / optimized / DLL files
