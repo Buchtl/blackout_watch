@@ -1,7 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Downloads from './Downloads';
+
+console.log("BEFOREAPP ClientSide:" + process.env.REACT_APP_URL);
 
 function App() {
   console.log("ClientSide:" + process.env.REACT_APP_URL);
