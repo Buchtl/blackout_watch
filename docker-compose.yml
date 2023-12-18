@@ -1,0 +1,11 @@
+
+services:
+  frontend:
+    image: blackout_watch_frontend:0.1
+    build: 
+      context: frontend
+      dockerfile: Dockerfile
+    environment:
+      - REACT_APP_URL=someghing.de:8080
+    ports:
+      - "8080:80"
